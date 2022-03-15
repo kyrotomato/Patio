@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Patio</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./assets/css/style.css" />
-
 </head>
 
 <body>
@@ -17,7 +17,8 @@
         <div class="navbar-brand">
             <!-- logo -->
             <div class="navbar-item">
-                <img src="./assets/images/patioLogo.png" style="min-height: 150px" class="py-3 px-3"></a>
+                <img src="./assets/images/patioLogo.png" alt="Company Logo" style="min-height: 150px"
+                    class="py-3 px-3"></a>
             </div>
             <!-- burger nav button -->
             <a class="navbar-burger" id="menu">
@@ -34,44 +35,42 @@
         </div>
     </nav>
 
-<main>
-<!--Main container-->
-<div class=container>
-<!--container for logo-->
-<!-- <div id="logo">
-    <img src="./assets/images/placeholder.jpg" alt="placeholder image">
-</div> -->
-<!--container for elements of app-->
-<div class="has-text-centered" id="container2">
-<div id="search-form">
-<textarea name="search bar" id="search"></textarea>
-<button id="search-button">Search</button>
-</div>
-<!--weather container-->
-<div id="weather">
-    <!--weather card-->
-    <div class="card">
+    <main>
+        <!--Main container-->
+        <section class="section pt-0">
+            <div class="container">
+                <!--container for elements of app-->
+                <div class="colums">
+                    <div id="container2">
+                        <div class="column has-text-centered">
+                            <h1 class="subtitle">Zipcode</h1>
+                        </div>
+                        <div class="column has-text-centered pb-0" id="search-form">
+                            <textarea name="search bar" id="search"></textarea>
+                        </div>
+                        <div class="column has-text-centered py-0" id="search-form">
+                            <button class="button" id="search-button">Search</button>
+                        </div>
+                        <!--weather container-->
+                        <div class="column has-text-centered" id="weather">
+                            <!--weather card-->
+                            <div class="card">
 
-    </div>
-</div>
-<div class="card" id="weather-card"></div>
-<!--Map/results-->
-<div id="map"><iframe
-    width="600"
-    height="450"
-    style="border:0"
-    loading="lazy"
-    allowfullscreen
-    src="https://www.google.com/maps/embed/v1/place?key=API_KEY
-      &q=Space+Needle,Seattle+WA">
-  </iframe></div>
-<!--results-->
-<div id="search-results"></div>
+                            </div>
+                        </div>
+                        <div class="card column has-text-centered" id="weather-card"></div>
+                        <!--Map/results-->
+                        <div class="column has-text-centered" id="map"><iframe width="600" height="450" style="border:0"
+                                loading="lazy" allowfullscreen
+                                src="https://www.google.com/maps/embed/v1/place?key=API_KEY&q=Space+Needle,Seattle+WA">
+                            </iframe>
+                        </div>
+                        <!--results-->
+                        <div id="search-results"></div>
+                    </div>
+                </div>
 
-</div>
-
-
-
+        </section>
 
 
 
@@ -80,11 +79,13 @@
 
 
 
-</div>
 
-</main>
 
-<script src="./assets/js/script.js"></script>
+        </div>
+
+    </main>
+
+    <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
