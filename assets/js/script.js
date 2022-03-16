@@ -3,6 +3,26 @@ const burgerIcon = document.querySelector('#menu');
 const navbarMenu = document.querySelector('#nav-links');
 var zipSearchText = document.querySelector('#search-content');
 var searchButton = document.querySelector('#search-button');
+var map = document.getElementById('map');
+
+//map query string
+
+
+
+//google map API
+//map search function
+var searchMap = function(event) {
+  event.preventDefault();
+  var zipCode = zipSearchText.value;
+  var mapQuery = "https://www.google.com/maps/embed/v1/search?q=" + "bars%20near%20" + zipCode + "&key=AIzaSyBCU-w2CS9bicLbnW4a2hIiPL2S07QUqgg";
+  map.src = mapQuery + zipCode;
+  console.log(mapQuery);
+  console.log(zipCode);
+  
+
+};
+
+
 
 //get geolocation with zipcode
 var getGeoLoc = function(event) {
@@ -70,6 +90,7 @@ var getLocalWeather = function(longitude, latitude) {
 
 //takes zipcode input and gets geolocation
 searchButton.addEventListener('click', getGeoLoc);
+searchButton.addEventListener("click", searchMap);
 
 burgerIcon.addEventListener('click', () => {
   navbarMenu.classList.toggle('is-active');
