@@ -13,6 +13,7 @@
 </head>
 
 <body>
+    <!-- Navbar (Bulma header) -->
     <nav class="navbar is-white has-shadow">
         <div class="navbar-brand">
             <!-- logo -->
@@ -20,7 +21,7 @@
                 <img src="./assets/images/patioLogo.png" alt="Company Logo" style="min-height: 150px"
                     class="py-3 px-3"></a>
             </div>
-            <!-- burger nav button -->
+            <!-- burger nav button for mobile use-->
             <a class="navbar-burger" id="menu">
                 <span></span>
                 <span></span>
@@ -40,22 +41,32 @@
         <section class="section pt-0">
             <div class="container">
                 <!--container for elements of app-->
-                <div class="colums">
-                    <div id="container2">
+                <div class="columns">
+                    <div class="column is-one-quarter">
                         <div class="column has-text-centered">
                             <h1 class="subtitle">Zipcode</h1>
                         </div>
                         <div class="column has-text-centered pb-0" id="search-form">
-                            <textarea name="search bar" id="search"></textarea>
+                            <!-- Input for Zipcode -->
+                            <input class="input" type="text" placeholder="Zipcode">
                         </div>
-                        <div class="column has-text-centered py-0" id="search-form">
-                            <button class="button" id="search-button">Search</button>
+                        <div class="column has-text-centered" id="search-form">
+                            <button class="button is-medium is-rounded is-info is-fullwidth is-outlined" id="search-button">Search</button>
                         </div>
+                        <div class="has-text-centered">
+                            <ul>
+                                <!-- buttons for broad searching -->
+                                <li><button class="button is-small is-info is-fullwidth is-outlined">Bar</button></li>
+                                <li><button class="button is-small is-info is-fullwidth is-outlined">Brewery</button></li>
+                                <li><button class="button is-small is-info is-fullwidth is-outlined">Restaurant</button></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="column" id="container2">
                         <!--weather container-->
                         <div class="column has-text-centered" id="weather">
                             <!--weather card-->
                             <div class="card">
-
                             </div>
                         </div>
                         <div class="card column has-text-centered" id="weather-card"></div>
