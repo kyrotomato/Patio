@@ -71,20 +71,7 @@ var getLocalWeather = function(longitude, latitude) {
   
 }
 
-//yelp API function
-// var yelpQuery=function(longitude, latitude){
-//   var yelpUrl = "https://api.yelp.com/v3/businesses/search?latitude=" + latitude + "&longitude=" + longitude;
-//   fetch(yelpUrl)
-//   .then(function(response) {
-//     if (response.ok) {
-//       //convert response to json
-//       response.json().then(function(data){
-//         console.log(data);
-//       })
-//     }
-//   });
-// }
-
+//https://www.openbrewerydb.org/
 var breweryQuery=function(longitude, latitude){
     //per_page=# will set how many breweries per call
     var breweryAPIUrl = "https://api.openbrewerydb.org/breweries?per_page=50&by_dist=" + latitude + "," + longitude;
