@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+
+<body>
+    <!-- Navbar (Bulma header) -->
+    <nav class="navbar is-primary has-shadow">
+        <div class="container is-max-desktop">
+            <div class="navbar-brand">
+                <!-- logo -->
+                <div class="navbar-item">
+                    <img src="./assets/images/patioLogo.png" alt="Company Logo" style="min-height: 150px"
+                        class="py-3 px-3"></a>
+                </div>
+                <!-- burger nav button for mobile use-->
+                <a class="navbar-burger" id="menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </a>
+            </div>
+            <div class="navbar-menu" id="nav-links">
+                <!-- nav menu -->
+                <div class="navbar-end">
+                    <a class="navbar-item">Saved</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!--Main container-->
+        <section class="section pt-0">
+            <div class="container">
+                <!--container for elements of app-->
+                <div class="columns">
+                    <div class="column is-one-quarter">
+                        <div class="column has-text-centered">
+                            <h1 class="subtitle">Zipcode</h1>
+                        </div>
+                        <div class="column has-text-centered pb-0" id="search-form">
+                            <!-- Input for Zipcode -->
+                            <input class="input" type="text" placeholder="Zipcode" id="search-content">
+                        </div>
+                        <div class="column has-text-centered" id="search-form">
+                            <button class="button is-small is-rounded is-info is-fullwidth is-outlined"
+                                id="search-button">Search</button>
+                        </div>
+                        <div class="has-text-centered">
+                            <ul>
+                                <!-- buttons for broad searching -->
+                                <li><button class="button is-small is-info is-fullwidth is-outlined">Bar</button></li>
+                                <li><button class="button is-small is-info is-fullwidth is-outlined">Brewery</button>
+                                </li>
+                                <li><button class="button is-small is-info is-fullwidth is-outlined">Restaurant</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="column" id="container2">
+                        <!--weather container-->
+                        <div class="column has-text-centered" id="weather">
+                            <!--weather card-->
+                            <div class="card">
+                            </div>
+                        </div>
+                        <div class="card column has-text-centered" id="weather-card"></div>
+                        <!--Map/results-->
+                        <div class="column has-text-centered"> <iframe id="map" width="600" height="450" style="border:0" loading="lazy" allowfullscreen
+                            src="https://www.google.com/maps/embed/v1/search?q=bars%20near%2078228&key=AIzaSyBCU-w2CS9bicLbnW4a2hIiPL2S07QUqgg"></iframe>
+                        </div>
+                        <!--results-->
+                        <div id="search-results"></div>
+                    </div>
+                </div>
+
+        </section>
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+    </main>
+
+    <script src="./assets/js/script.js"></script>
+</body>
+
+</html>
