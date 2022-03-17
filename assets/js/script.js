@@ -5,24 +5,6 @@ var zipSearchText = document.querySelector('#search-content');
 var searchButton = document.querySelector('#search-button');
 var map = document.getElementById('map');
 
-//map query string
-
-
-
-//google map API
-//map search function
-var searchMap = function(event) {
-  event.preventDefault();
-  var zipCode = zipSearchText.value;
-  var mapQuery = "https://www.google.com/maps/embed/v1/search?q=" + "bars%20near%20" + zipCode + "&key=AIzaSyBCU-w2CS9bicLbnW4a2hIiPL2S07QUqgg";
-  map.src = mapQuery + zipCode;
-  console.log(mapQuery);
-  console.log(zipCode);
-  
-
-};
-
-
 
 //get geolocation with zipcode
 var getGeoLoc = function(event) {
@@ -32,7 +14,7 @@ var getGeoLoc = function(event) {
   var zipCode = zipSearchText.value;
   console.log(zipCode);
   //reset text field
-  zipSearchText.value = "";
+  //zipSearchText.value = "";
 
   //api url (geolocation)
   var geoApiUrl = "http://api.openweathermap.org/geo/1.0/zip?zip=" + zipCode + "&appid=6c1a0cb9791079e8155bbd6c4f59e4da";
@@ -52,6 +34,7 @@ var getGeoLoc = function(event) {
         var latitude = data.lat;
 
         getLocalWeather(longitude, latitude);
+        yelpQuery(longitude, latitude)
 
       });
     }
@@ -88,9 +71,22 @@ var getLocalWeather = function(longitude, latitude) {
   
 }
 
+//yelp API function
+var yelpQuery=function(longitude, latitude){
+  var yelpUrl = "https://api.yelp.com/v3/businesses/search?latitude=" + latitude + "&longitude=" + longitude;
+  fetch(yelpUrl)
+  .then(function(response) {
+    if (response.ok) {
+      //convert response to json
+      response.json().then(function(data){
+        console.log(data);
+      })
+    }
+  });
+}
+
 //takes zipcode input and gets geolocation
 searchButton.addEventListener('click', getGeoLoc);
-searchButton.addEventListener("click", searchMap);
 
 burgerIcon.addEventListener('click', () => {
   navbarMenu.classList.toggle('is-active');
