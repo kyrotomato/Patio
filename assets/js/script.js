@@ -86,7 +86,8 @@ var getLocalWeather = function(longitude, latitude) {
 // }
 
 var breweryQuery=function(longitude, latitude){
-    var breweryAPIUrl = "https://api.openbrewerydb.org/breweries?by_dist=" + latitude + "," + longitude;
+    //per_page=# will set how many breweries per call
+    var breweryAPIUrl = "https://api.openbrewerydb.org/breweries?per_page=50&by_dist=" + latitude + "," + longitude;
     fetch(breweryAPIUrl)
     .then(function(response) {
       if (response.ok) {
