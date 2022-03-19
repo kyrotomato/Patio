@@ -4,6 +4,7 @@ const navbarMenu = document.querySelector("#nav-links");
 var zipSearchText = document.querySelector("#search-content");
 var searchButton = document.querySelector("#search-button");
 var map = document.getElementById("map");
+var weatherCard = document.querySelector("#weather-card");
 
 //get geolocation with zipcode
 var getGeoLoc = function (event) {
@@ -64,6 +65,9 @@ var getLocalWeather = function (longitude, latitude) {
       response.json().then(function (data) {
         //weather json
         console.log(data);
+
+        //pass data to setWeatherInfo
+        setWeatherInfo(data);
       });
     }
   });
@@ -86,6 +90,48 @@ var breweryQuery = function (longitude, latitude) {
     }
   });
 };
+
+//print weather information ~ pass JSON from weather fetch.
+var setWeatherInfo = function(data) {
+  //check data
+  console.log(data);
+
+  //get current date
+  var date = new Date();
+  console.log(date);
+
+  //loop and create 5 day weather forecast
+  for (var i = 0; i < 5; i++) {
+    
+    //create div to hold each forcast
+    var divEl = document.createElement("div");
+
+    //create date
+    var dateEl = document.createElement("p");
+    
+    //take unix time from JSON, multiply it by 1000, pass it into new Date()
+    //trim additional time information
+    var unix = data.daily[i].dt;
+    var unixConvert = unix * 1000;
+    var unixTime = new Date(unixConvert);
+    var trimmedTime = unixTime.toDateString("en-US");
+
+    //assign time to created dateEl
+    dateEl.textContent = trimmedTime;
+
+    //create temperature element
+    var tempEl = document.createElement("p");
+    
+    //assign tempEl value of temperature from JSON
+    tempEl.textContent = data.daily[i].temp.day + " \u00B0 F";
+
+    //append elemetns to weather div
+    divEl.appendChild(dateEl);
+    divEl.appendChild(tempEl);
+    weatherCard.appendChild(divEl);
+  }
+
+}
 
 //takes zipcode input and gets geolocation
 searchButton.addEventListener("click", getGeoLoc);
