@@ -86,9 +86,19 @@ var breweryQuery = function (longitude, latitude) {
       //convert response to json
       response.json().then(function (data) {
         console.log(data);
+        brewName(data)
       });
     }
   });
+};
+
+var brewName = function(data) {
+  console.log(data);
+  //loop names
+  for (var i = 0; i < 5; i++){
+    var barName = data.[i].name
+    console.log(barName)
+  };
 };
 
 //print weather information ~ pass JSON from weather fetch.
@@ -111,6 +121,7 @@ var setWeatherInfo = function(data) {
     
     //take unix time from JSON, multiply it by 1000, pass it into new Date()
     //trim additional time information
+    
     var unix = data.daily[i].dt;
     var unixConvert = unix * 1000;
     var unixTime = new Date(unixConvert);
