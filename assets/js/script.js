@@ -103,7 +103,7 @@ var setWeatherInfo = function(data) {
   //loop and create 5 day weather forecast
   for (var i = 0; i < 5; i++) {
     
-    //create div to hold forcasts
+    //create div to hold each forcast
     var divEl = document.createElement("div");
 
     //create date
@@ -119,8 +119,15 @@ var setWeatherInfo = function(data) {
     //assign time to created dateEl
     dateEl.textContent = trimmedTime;
 
+    //create temperature element
+    var tempEl = document.createElement("p");
+    
+    //assign tempEl value of temperature from JSON
+    tempEl.textContent = data.daily[i].temp.day + " \u00B0 F";
+
     //append elemetns to weather div
     divEl.appendChild(dateEl);
+    divEl.appendChild(tempEl);
     weatherCard.appendChild(divEl);
   }
 
