@@ -172,7 +172,7 @@ var setWeatherInfo = function(data) {
     weatherCard.appendChild(divEl);
 
     //attributes
-    $(weatherCard).addClass("card");
+    $(divEl).addClass("column card weathercard")
     $(brewEl).addClass("card ");
   }
 
