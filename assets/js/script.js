@@ -4,7 +4,7 @@ const navbarMenu = document.querySelector("#nav-links");
 var zipSearchText = document.querySelector("#search-content");
 var searchButton = document.querySelector("#search-button");
 var map = document.getElementById("map");
-var weatherCard = document.querySelector("#weather-card");
+var weatherCard = document.querySelector("#weather-text");
 
 //get geolocation with zipcode
 var getGeoLoc = function (event) {
@@ -92,7 +92,7 @@ var breweryQuery = function (longitude, latitude) {
 };
 
 //print weather information ~ pass JSON from weather fetch.
-var setWeatherInfo = function(data) {
+var setWeatherInfo = function (data) {
   //check data
   console.log(data);
 
@@ -102,13 +102,12 @@ var setWeatherInfo = function(data) {
 
   //loop and create 5 day weather forecast
   for (var i = 0; i < 5; i++) {
-    
     //create div to hold each forcast
     var divEl = document.createElement("div");
-
+    // var newCard = document.createElement(".weatherCard");
     //create date
     var dateEl = document.createElement("p");
-    
+
     //take unix time from JSON, multiply it by 1000, pass it into new Date()
     //trim additional time information
     var unix = data.daily[i].dt;
@@ -121,7 +120,7 @@ var setWeatherInfo = function(data) {
 
     //create temperature element
     var tempEl = document.createElement("p");
-    
+
     //assign tempEl value of temperature from JSON
     tempEl.textContent = data.daily[i].temp.day + " \u00B0 F";
 
@@ -130,8 +129,7 @@ var setWeatherInfo = function(data) {
     divEl.appendChild(tempEl);
     weatherCard.appendChild(divEl);
   }
-
-}
+};
 
 //takes zipcode input and gets geolocation
 searchButton.addEventListener("click", getGeoLoc);
