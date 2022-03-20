@@ -3,12 +3,13 @@ const burgerIcon = document.querySelector("#menu");
 const navbarMenu = document.querySelector("#nav-links");
 var zipSearchText = document.querySelector("#search-content");
 var searchButton = document.querySelector("#search-button");
+var savedButton = document.querySelector("#savedbtn");
 var map = document.getElementById("map");
 var weatherCard = document.querySelector("#weather-card");
 var brewEl = document.querySelector("#barContainer");
 var brewCardContEl = document.querySelector("#brewcard-container");
 var searchfieldEl = document.querySelector("#searchField");
-var weatherContainer = document.querySelector("#weatherContainer");
+var weatherContainer = document.querySelector("#weather-text");
 
 //get geolocation with zipcode
 var getGeoLoc = function (event) {
@@ -179,4 +180,55 @@ searchButton.addEventListener("click", getGeoLoc);
 
 burgerIcon.addEventListener("click", () => {
   navbarMenu.classList.toggle("is-active");
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Functions to open and close a modal
+  function openModal($el) {
+    $el.classList.add("is-active");
+  }
+
+  function closeModal($el) {
+    $el.classList.remove("is-active");
+  }
+
+  function closeAllModals() {
+    (document.querySelectorAll(".modal") || []).forEach(($modal) => {
+      closeModal($modal);
+    });
+  }
+
+  // Add a click event on buttons to open a specific modal
+  (document.querySelectorAll(".js-modal-trigger") || []).forEach(($trigger) => {
+    const modal = $trigger.dataset.target;
+    const $target = document.getElementById(modal);
+    // console.log($target);
+
+    $trigger.addEventListener("click", () => {
+      openModal($target);
+    });
+  });
+
+  // Add a click event on various child elements to close the parent modal
+  (
+    document.querySelectorAll(
+      ".modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button"
+    ) || []
+  ).forEach(($close) => {
+    const $target = $close.closest(".modal");
+
+    $close.addEventListener("click", () => {
+      closeModal($target);
+    });
+  });
+
+  // Add a keyboard event to close all modals
+  document.addEventListener("keydown", (event) => {
+    const e = event || window.event;
+
+    if (e.keyCode === 27) {
+      // Escape key
+      closeAllModals();
+    }
+  });
 });

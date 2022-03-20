@@ -32,7 +32,7 @@
             <div class="navbar-menu" id="nav-links">
                 <!-- nav menu -->
                 <div class="navbar-end">
-                    <a class="navbar-item">Saved</a>
+                    <a class="navbar-item js-modal-trigger" data-target="modal-js-example" id="savedbtn">Recent Searches</a>
                 </div>
             </div>
         </div>
@@ -101,6 +101,18 @@
 
 
     </main>
+
+    <div id="modal-js-example" class="modal">
+        <div class="modal-background"></div>
+      
+        <div class="modal-content">
+          <div class="box">
+            <p>Recent Search History</p>
+            <!-- Your content -->
+          </div>
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+    </div>
 
     <script src="./assets/js/script.js"></script>
 </body>
