@@ -5,6 +5,10 @@ var zipSearchText = document.querySelector("#search-content");
 var searchButton = document.querySelector("#search-button");
 var map = document.getElementById("map");
 var weatherCard = document.querySelector("#weather-card");
+var brewEl = document.querySelector("#barContainer");
+var brewCardContEl = document.querySelector("#brewcard-container");
+var searchfieldEl = document.querySelector("#searchField");
+var weatherContainer = document.querySelector("#weatherContainer");
 
 //get geolocation with zipcode
 var getGeoLoc = function (event) {
@@ -85,10 +89,46 @@ var breweryQuery = function (longitude, latitude) {
     if (response.ok) {
       //convert response to json
       response.json().then(function (data) {
-        console.log(data);
+        //console.log(data);
+        brewName(data);
+        
       });
     }
   });
+};
+
+var brewName = function(data) {
+  console.log(data);
+  //loop names
+  for (var i = 0; i < 5; i++){
+    var barName = data[i].name;
+    var brewAddy = data[i].street;
+    console.log(barName);
+
+    //create element to hold bar name
+    var brewCard = document.createElement("div");
+    var breweryName = document.createElement("h3");
+    var imageplaceholder = document.createElement("div");
+    var brewAddress = document.createElement("p");
+    
+    //append to div
+    
+    brewCardContEl.appendChild(brewCard);
+    brewCard.appendChild(breweryName);
+    brewCard.appendChild(imageplaceholder);
+    brewCard.appendChild(brewAddress);
+    //add content to created elements
+    breweryName.innerText = barName;
+    brewAddress.innerText = brewAddy;
+    imageplaceholder.innerHTML = "<img src='./assets/images/beerlogo.jpg'>";
+    //attributes
+    $(brewEl).addClass("row");
+    $(brewCardContEl).addClass("columns");
+    $(brewCard).addClass("column");
+    $(searchfieldEl).addClass("row");
+    $(weatherContainer).addClass("row");
+    
+  };
 };
 
 //print weather information ~ pass JSON from weather fetch.
@@ -111,6 +151,7 @@ var setWeatherInfo = function(data) {
     
     //take unix time from JSON, multiply it by 1000, pass it into new Date()
     //trim additional time information
+    
     var unix = data.daily[i].dt;
     var unixConvert = unix * 1000;
     var unixTime = new Date(unixConvert);
@@ -129,6 +170,10 @@ var setWeatherInfo = function(data) {
     divEl.appendChild(dateEl);
     divEl.appendChild(tempEl);
     weatherCard.appendChild(divEl);
+
+    //attributes
+    $(weatherCard).addClass("card");
+    $(brewEl).addClass("card ");
   }
 
 }
