@@ -19,7 +19,7 @@ var getGeoLoc = function (event) {
   var zipCode = zipSearchText.value;
   console.log(zipCode);
   //reset text field
-  //zipSearchText.value = "";
+  zipSearchText.value = "";
 
   //api url (geolocation)
   var geoApiUrl =
@@ -171,7 +171,6 @@ var setWeatherInfo = function (data) {
 
     //attributes
     $(divEl).addClass("column card weathercard");
-    
   }
 };
 
