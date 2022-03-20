@@ -124,7 +124,7 @@ var brewName = function(data) {
     //attributes
     $(brewEl).addClass("row");
     $(brewCardContEl).addClass("columns");
-    $(brewCard).addClass("column");
+    $(brewCard).addClass("column card brewcard");
     $(searchfieldEl).addClass("row");
     $(weatherContainer).addClass("row");
     
@@ -172,8 +172,8 @@ var setWeatherInfo = function(data) {
     weatherCard.appendChild(divEl);
 
     //attributes
-    $(divEl).addClass("column card weathercard")
-    $(brewEl).addClass("card ");
+    $(divEl).addClass("column card weathercard");
+    
   }
 
 }
