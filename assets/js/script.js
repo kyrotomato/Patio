@@ -1,3 +1,6 @@
+//search history array
+var searchHistory = [];
+
 //query selectors
 const burgerIcon = document.querySelector("#menu");
 const navbarMenu = document.querySelector("#nav-links");
@@ -15,12 +18,14 @@ var weatherContainer = document.querySelector("#weather-text");
 var getGeoLoc = function (event) {
   //prevent auto refresh on click
   event.preventDefault();
+  
+  //clear previous search content
+  weatherCard.textContent = "";
+  brewCardContEl.textContent = "";
 
   var zipCode = zipSearchText.value;
   console.log(zipCode);
-  //reset text field
-  zipSearchText.value = "";
-
+ 
   //api url (geolocation)
   var geoApiUrl =
     "http://api.openweathermap.org/geo/1.0/zip?zip=" +
@@ -174,8 +179,27 @@ var setWeatherInfo = function (data) {
   }
 };
 
+//set search input to local storage
+var assignLocalStorage = function(event) {
+  //add search to variable
+  var zipcodeHistory = zipSearchText.value;
+  console.log(zipcodeHistory);
+  
+  //reset input text field
+  zipSearchText.value = "";
+
+  //add search input to searchHistory array
+  searchHistory.push(zipcodeHistory);
+
+  //set array to local storage
+  localStorage.setItem("zipcode", JSON.stringify(searchHistory));
+}
+
 //takes zipcode input and gets geolocation
 searchButton.addEventListener("click", getGeoLoc);
+
+//takes zipcode and adds it to localStorage
+searchButton.addEventListener("click", assignLocalStorage);
 
 burgerIcon.addEventListener("click", () => {
   navbarMenu.classList.toggle("is-active");
