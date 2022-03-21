@@ -13,6 +13,7 @@ var brewEl = document.querySelector("#barContainer");
 var brewCardContEl = document.querySelector("#brewcard-container");
 var searchfieldEl = document.querySelector("#searchField");
 var weatherContainer = document.querySelector("#weather-text");
+var modalSearch = document.querySelector("#search-history");
 
 //get geolocation with zipcode
 var getGeoLoc = function (event) {
@@ -193,6 +194,28 @@ var assignLocalStorage = function(event) {
 
   //set array to local storage
   localStorage.setItem("zipcode", JSON.stringify(searchHistory));
+
+  printLocal();
+}
+
+var printLocal = function() {
+  //check if there is anything in localStorage
+  var localZip = localStorage.getItem("zipcode");
+  
+  //if localstorgae exists, parse it and assign the array values to the 
+  if(localZip) {
+    //clear array to accept local storage info
+    searchHistory = [];
+
+    //parse localStorage
+    localZip = JSON.parse(localZip);
+
+    //assign array to searchHistory array
+    searchHistory = localZip;
+  }
+  else {
+    return;
+  }  
 }
 
 //takes zipcode input and gets geolocation
