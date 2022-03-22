@@ -14,6 +14,7 @@ var brewCardContEl = document.querySelector("#brewcard-container");
 var searchfieldEl = document.querySelector("#searchField");
 var weatherContainer = document.querySelector("#weather-text");
 var modalSearch = document.querySelector("#search-history");
+var zipHistory = document.querySelector("#lsHistory");
 
 //get geolocation with zipcode
 var getGeoLoc = function (event) {
@@ -212,10 +213,14 @@ var printLocal = function() {
 
     //assign array to searchHistory array
     searchHistory = localZip;
+    
   }
   else {
     return;
-  }  
+    //local storage print to p element modal
+    
+  }
+  zipHistory.innerText=searchHistory;
 }
 
 //takes zipcode input and gets geolocation
