@@ -20,14 +20,14 @@ var zipHistory = document.querySelector("#lsHistory");
 var getGeoLoc = function (event) {
   //prevent auto refresh on click
   event.preventDefault();
-  
+
   //clear previous search content
   weatherCard.textContent = "";
   brewCardContEl.textContent = "";
 
   var zipCode = zipSearchText.value;
   console.log(zipCode);
- 
+
   //api url (geolocation)
   var geoApiUrl =
     "http://api.openweathermap.org/geo/1.0/zip?zip=" +
@@ -40,7 +40,7 @@ var getGeoLoc = function (event) {
       if (response.ok) {
         //convert response to json
         response.json().then(function (data) {
-          console.log(data);
+          // console.log(data);
 
           //retrieve lon + lat info for zipcode
           var longitude = data.lon;
@@ -182,11 +182,11 @@ var setWeatherInfo = function (data) {
 };
 
 //set search input to local storage
-var assignLocalStorage = function(event) {
+var assignLocalStorage = function (event) {
   //add search to variable
   var zipcodeHistory = zipSearchText.value;
   console.log(zipcodeHistory);
-  
+
   //reset input text field
   zipSearchText.value = "";
 
@@ -197,14 +197,14 @@ var assignLocalStorage = function(event) {
   localStorage.setItem("zipcode", JSON.stringify(searchHistory));
 
   printLocal();
-}
+};
 
-var printLocal = function() {
+var printLocal = function () {
   //check if there is anything in localStorage
   var localZip = localStorage.getItem("zipcode");
-  
-  //if localstorgae exists, parse it and assign the array values to the 
-  if(localZip) {
+
+  //if localstorgae exists, parse it and assign the array values to the
+  if (localZip) {
     //clear array to accept local storage info
     searchHistory = [];
 
@@ -213,15 +213,12 @@ var printLocal = function() {
 
     //assign array to searchHistory array
     searchHistory = localZip;
-    
-  }
-  else {
+  } else {
     return;
     //local storage print to p element modal
-    
   }
-  zipHistory.innerText=searchHistory;
-}
+  zipHistory.innerText = searchHistory;
+};
 
 //takes zipcode input and gets geolocation
 searchButton.addEventListener("click", getGeoLoc);
