@@ -31,7 +31,7 @@ var getGeoLoc = function (event) {
 
   //api url (geolocation)
   var geoApiUrl =
-    "http://api.openweathermap.org/geo/1.0/zip?zip=" +
+    "https://api.openweathermap.org/geo/1.0/zip?zip=" +
     zipCode +
     "&appid=6c1a0cb9791079e8155bbd6c4f59e4da";
 
