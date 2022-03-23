@@ -40,7 +40,7 @@ var getGeoLoc = function (event) {
       if (response.ok) {
         //convert response to json
         response.json().then(function (data) {
-          console.log(data);
+          // console.log(data);
 
           //retrieve lon + lat info for zipcode
           var longitude = data.lon;
