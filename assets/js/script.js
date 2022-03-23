@@ -15,6 +15,7 @@ var searchfieldEl = document.querySelector("#searchField");
 var weatherContainer = document.querySelector("#weather-text");
 var modalSearch = document.querySelector("#search-history");
 var zipHistory = document.querySelector("#lsHistory");
+var CityNameEl = document.querySelector("#cityName");
 
 //get geolocation with zipcode
 var getGeoLoc = function (event) {
@@ -40,7 +41,7 @@ var getGeoLoc = function (event) {
       if (response.ok) {
         //convert response to json
         response.json().then(function (data) {
-          // console.log(data);
+          console.log(data);
 
           //retrieve lon + lat info for zipcode
           var longitude = data.lon;
@@ -76,7 +77,10 @@ var getLocalWeather = function (longitude, latitude) {
       //convert response to json
       response.json().then(function (data) {
         //weather json
-        // console.log(data);
+        console.log(data);
+        console.log(data.alerts[0].sender_name);
+        $(".cityName").html(""),
+          $(".cityName").append(data.alerts[0].sender_name);
 
         //pass data to setWeatherInfo
         setWeatherInfo(data);
